@@ -31,6 +31,8 @@ A aplicação destina-se ao suporte ao usuário da bancada, com intuito de forne
 	\end{tabular}
 \end{table}
 
+\newpage
+
 \subsubsection{Sentença de posição do produto}
 
 \begin{table}[h!]
@@ -49,11 +51,97 @@ A aplicação destina-se ao suporte ao usuário da bancada, com intuito de forne
 \end{table}
 
 
-\subsubsection{Resumo dos envolvidos}
-
-
 \subsection{Decrição dos Envolvidos e dos Usuários}
 
+\subsubsection{Resumo dos envolvidos}
+
+Informações dos stakeholders do projeto de desenvolvimento do software.
+
+\begin{table}[h!]
+	\centering
+	\caption{Descrição dos envolvidos e dos usuários.}
+	\label{descricaoDosEnvolvidos}
+	\begin{tabular}{|l|l|l|}
+		\hline
+		\textbf{Nome}                                                                     & \textbf{Descrição}                                                                                                                                                                              & \textbf{Responsabilidades}                                                                                                                               \\ \hline
+		\begin{tabular}[c]{@{}l@{}}Desenvolvedores do \\ software de análise\end{tabular} & \begin{tabular}[c]{@{}l@{}}Alunos de graduação do\\  curso de Engenharia de\\  Software\end{tabular}                                                                                            & \begin{tabular}[c]{@{}l@{}}Análise dos requisitos do \\ software, modelar \\ arquitetura do software,\\ implementar e implantar\\ software.\end{tabular} \\ \hline
+		Professores                                                                       & \begin{tabular}[c]{@{}l@{}}Professores da disciplina de \\ Projeto Integrador 2\end{tabular}                                                                                                    & \begin{tabular}[c]{@{}l@{}}Acompanhar e avaliar o \\ desenvolvimento do projeto\end{tabular}                                                             \\ \hline
+		\begin{tabular}[c]{@{}l@{}}Equipe de desenvolvimento \\ da bancada\end{tabular}   & \begin{tabular}[c]{@{}l@{}}Alunos de graduação do\\ curso de Engenharia de \\ Energia, Eletrônica, \\ Automotiva, Aeroespacial \\ que compõem a equipe\\ desenvolvedora da bancada\end{tabular} & \begin{tabular}[c]{@{}l@{}}Atuar como clientes,\\ apresentando os problemas\\ que tem que ser resolvidos\\  através da aplicação.\end{tabular}           \\ \hline
+	\end{tabular}
+\end{table}
+
+\newpage
+
+\subsubsection{Resumo dos usuários}
+
+Informações dos usuários finais do software.
+
+\begin{table}[h!]
+	\centering
+	\caption{Usuários finais}
+	\label{usuariosfinais}
+	\begin{tabular}{|l|l|l|}
+		\hline
+		\textbf{Nome} & \textbf{Descrição}                                                                       & \textbf{Responsabilidades}                                                                                                                \\ \hline
+		Professores   & \begin{tabular}[c]{@{}l@{}}Professores do curso de \\ Engenharia Automotiva\end{tabular} & \begin{tabular}[c]{@{}l@{}}Realizar o acompanhamento \\ geral das informações \\ apresentadas do motor e\\ gerar relatórios.\end{tabular} \\ \hline
+		Alunos        & \begin{tabular}[c]{@{}l@{}}Alunos do curso de \\ Engenharia Automotiva\end{tabular}      & \begin{tabular}[c]{@{}l@{}}Realizar o acompanhamento\\ geral das informações \\ apresentadas do motor \\ e gerar relatórios.\end{tabular} \\ \hline
+	\end{tabular}
+\end{table}
+
+\subsubsection{Ambiente do usuário}
+
+O software será utilizado diretamente na bancada, pois trata-se de uma aplicação desktop para o raspbian, sistema operacional baseado em debian que servirá como plataforma para o software. 
+
+\subsubsection{Principais necessidades dos usuários ou dos envolvidos}
+
+\begin{table}[h!]
+	\centering
+	\caption{Necessidades dos usuários ou dos envolvidos}
+	\label{necessidadesDosUsuariosOuDosEnvolvidos}
+	\begin{tabular}{|l|l|l|}
+		\hline
+		\textbf{Necessidade}                                                                                                                        & \textbf{Solução atual} & \textbf{Solução proposta}                                                                                                                                      \\ \hline
+		\begin{tabular}[c]{@{}l@{}}Realizar o \\ acompanhamento geral\\ das informações \\ apresentadas do motor e\\ gerar relatórios.\end{tabular} & Não há.                & \begin{tabular}[c]{@{}l@{}}Exposição dos dados\\ coletados pelos sensores\\ acoplados ao motor, \\ geração de gráficos, \\ geração de relatórios.\end{tabular} \\ \hline
+	\end{tabular}
+\end{table}
+
+\subsection{Visão Geral do Produto}
+
+\subsubsection{Perspectiva do produto}
+
+Espera-se que o software sirva de auxílio à bancada de testes de um motor a combustão, permitindo uma melhor e mais agradável visualização do funcionamento do equipamento, resultando numa maior facilidade no aprendizado a partir dos alunos.
+
+\subsubsection{Resumo dos recursos}
+
+Os recursos que o sistema deve conter são funcionalidades importantes para resolver o problema e as necessidades do cliente. Este software conta com as seguintes funcionalidades:
+
+\begin{itemize}
+	\item Coleta e Armazenamento de dados - Esta funcionalidade permite que o usuário salve os dados coletados na análise.
+	\item Visualização dos resultados - Esta funcionalidade permite que o usuário visualize os resultados da análise realizada por meio de gráficos intuitivos.
+\end{itemize}
+
+\subsection{Recursos do Produto}
+
+\begin{itemize}
+	\item O sistema deve coletar os dados do motor em “tempo real” transmitidos pela MSP430;
+	\item O sistema deve realizar o tratamento dos dados para apresentá-los ao usuário;
+	\item O sistema deve plotar gráficos a partir dos dados captados;
+	\item O sistema deve possuir um botão para que o usuário tenha a opção de salvar todos os dados da análise em um banco de dados;
+	\item O sistema deve possuir a opção de gerar um relatório.
+\end{itemize}
+
+\subsection{Restrições}
+
+Nesta seção serão apresentados as restrições de design, restrições externas, como requisitos operacionais ou regulamentares e outras dependências.
+
+São restrições do produto:
+
+\begin{itemize}
+	\item O software deverá ser embarcado em uma RaspBerry PI 3 B;
+	\item O software deverá possuir rotinas para a comunicação serial com um microcontrolador MSP430;
+	\item O software deverá ser, em essência, uma aplicação Desktop;
+	\item O software não deverá realizar o controle de partida e aceleração do motor por questões de segurança.
+\end{itemize}
 
 \chapter{Segundo Anexo}
 
