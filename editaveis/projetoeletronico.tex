@@ -6,7 +6,7 @@ Captar, condicionar e processar os dados obtidos através dos sensores internos 
 
 \section{Requisitos}
 
-O intuito de analisar eletronicamente os principais parâmetros de funcionamento de um motor implica na aplicação de um sistema de sensoriamento, tanto interno, quanto externo do motor. Com o passar dos anos e a evolução tecnológica este sensoriamento está cada vez mais completo. Os motores já saem de fábrica com uma grande oferta de sensores acoplados internamente \cite{techreport}. Estes sensores variam de acordo com modelo e fabricante do motor, mas normalmente apresentam as mesmas características para um mesmo parâmetro.
+O intuito de analisar eletronicamente os principais parâmetros de funcionamento de um motor implica na aplicação de um sistema de sensoriamento, tanto interno, quanto externo do motor. Com o passar dos anos e a evolução tecnológica este sensoriamento está cada vez mais completo. Os motores já saem de fábrica com uma grande oferta de sensores acoplados internamente \cite{valle2004mapping}. Estes sensores variam de acordo com modelo e fabricante do motor, mas normalmente apresentam as mesmas características para um mesmo parâmetro.
 
 Os principais parâmetros de um motor a serem avaliados são:
 
@@ -61,6 +61,120 @@ Todo sistema de aquisição a ser implementado pode ser dividido em 4 módulos, 
 	\label{diagramaDeAquisicaoDeDados}
 \end{figure}
 
-\subsection{Sensores}
+\subsubsection{Sensores}
 
-Os sensores utilizados internamente no motor apresentam características específicas apresentadas na tabela x.
+Os sensores utilizados internamente no motor apresentam características específicas apresentadas na tabela \ref{PrincipaisSensoresInternosDeUmMotor}.
+
+
+\begin{table}[h!]
+	\centering
+	\caption{Principais sensores internos de um motor}
+	\label{PrincipaisSensoresInternosDeUmMotor}
+	
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		\textbf{Parâmetros}          & \textbf{\begin{tabular}[c]{@{}c@{}}Tipo de \\ Sinal Gerado\end{tabular}}s & \textbf{Tipo de sensor}                                                                                    & \textbf{Descrição}                                                                                           \\ \hline
+		Temperatura do ar            & Analógico                     & Termistor (NTC)                                                                                            & \begin{tabular}[c]{@{}c@{}}Monitora a\\ temperatura do ar no\\ coletor de admissão\end{tabular}              \\ \hline
+		Temperatura da Água          & Analógico                     & Termistor (NTC)                                                                                            & \begin{tabular}[c]{@{}c@{}}Monitora a \\ temperatura do líquido \\ de arrefecimento do\\ motor\end{tabular}  \\ \hline
+		Pressão no Coletor           & Digital                       & Pressão diferencial                                                                                        & \begin{tabular}[c]{@{}c@{}}Monitora a pressão do\\  ar no coletor de \\ admissão\end{tabular}                \\ \hline
+		Rotação                      & Digital                       & Sensor Indutivo                                                                                            & \begin{tabular}[c]{@{}c@{}}Mede velocidade \\ angular do eixo\\ das árvores de\\ manivelas\end{tabular}      \\ \hline
+		Velocidade                   & Digital                       & Sensor Indutivo                                                                                            & \begin{tabular}[c]{@{}c@{}}Mede velocidade\\ angular do eixo\\  posterior a \\ transmissão\end{tabular}      \\ \hline
+		Posição da válvula borboleta & Analógico                     & Potenciômetro Linear                                                                                       & \begin{tabular}[c]{@{}c@{}}Monitora a posição\\ angular da válvula\\  borboleta\end{tabular}                 \\ \hline
+		Fluxo de Ar                  & Analógico                     & Potenciômetro Linear                                                                                       & \begin{tabular}[c]{@{}c@{}}Monitora o fluxo\\ de ar posterior\\ a válvula borboleta\end{tabular}             \\ \hline
+		Oxigênio (Sonda/Lambda)      & Analógico                     & \begin{tabular}[c]{@{}c@{}}Eletrodos de platina \\ separados por óxidos\\  ativos TiO2 e ZrO2\end{tabular} & \begin{tabular}[c]{@{}c@{}}Monitora a quantidade\\ de oxigênio presente\\ nos gases de exaustão\end{tabular} \\ \hline
+	\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+	\centering
+	\caption{Sensores a serem implementados. Fonte: Autores}
+	\label{SensoresASeremImplementados}
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{Parâmetros}                                                                     & \textbf{\begin{tabular}[c]{@{}l@{}}Tipo de \\ Sinal Gerado\end{tabular}} & \textbf{Tipo de Sensor} & \textbf{Descrição}                                                                                                  \\ \hline
+		\begin{tabular}[c]{@{}l@{}}Temperatura de\\ entrada da água no\\  radiador\end{tabular} & Analógico                                                                & Termistor (NTC)         & \begin{tabular}[c]{@{}l@{}}Monitora a \\ temperatura de entrada\\ da água no radiador\end{tabular}                  \\ \hline
+		\begin{tabular}[c]{@{}l@{}}Temperatura de \\ saída da água \\ no radiador\end{tabular}  & Analógico                                                                & Termistor (NTC)         & \begin{tabular}[c]{@{}l@{}}Monitora a \\ temperatura da água \\ na saída do radiador\end{tabular}                   \\ \hline
+		\begin{tabular}[c]{@{}l@{}}Temperatura dos\\ gases de \\ Combustão\end{tabular}         & Analógico                                                                & Termistor (NTC)         & \begin{tabular}[c]{@{}l@{}}Monitora a \\ temperatura dos \\ gases de combustão\\  no sistema de escape\end{tabular} \\ \hline
+	\end{tabular}
+\end{table}
+
+Tendo em vista o difícil acesso as configurações dos sensores internos todos os sensores listados nas tabelas \ref{PrincipaisSensoresInternosDeUmMotor} e \ref{SensoresASeremImplementados} serão adquiridos e implementados de acordo com os requisitos para cada parâmetro a ser analisado. Todos estes sensores devem apresentar a mesma metodologia de funcionamento dos sensores internos. Isso facilitará a calibração dos sensores.
+
+\subsubsection{Microcontrolador}
+
+Analisando os tipos de sensores das tabelas \ref{PrincipaisSensoresInternosDeUmMotor} e \ref{SensoresASeremImplementados}, levando em consideração os tipos de sinais de saída e a quantidade de parâmetros a serem analisados, o microcontrolador selecionado para realizar a aquisição e processamento destes sinais foi a MSP430 (\textit{Texas Instruments}), pois esta apresenta as seguintes características relevantes para este projeto \cite{texas01}:
+
+\begin{itemize}
+	\item 8 portas I/O digitais;
+	\item \textit{Clock} principal 16 MHz, posibilitando um tempo hábil para processamento de instruções e sinais;
+	\item 2 conversores A/D, sendo 1 de 10 bits e 1 de 12 bits;
+	\item Baixo consumo de energia, sendo da ordem de $\mu$W (micro Watts) atuando no modo de baixo consumo;
+	\item Portas configuráveis como UART, o que possibilita a utilização de um protocolo de comunicação serial.
+\end{itemize}
+
+A análise para seleção do microcontrolador foi feita baseada nos requisitos determinados anteriormente e o custo do dispositivo, tendo em vista que para a implementação do projeto a MSP430 já era um dos recursos disponíveis, sendo então necessária apenas a análise com relação à demanda dos requisitos. 
+
+Este microcontrolador atua com níveis de tensão 0 - 3.3V, entretanto, alguns dos sensores apresentam níveis de tensão muito baixo, na ordem de $\mu$V, o que dificulta o tratamento destes sinais, onde há grande probabilidade de erro de leitura, levando em consideração ruídos e interferências. Com isso, faz-se necessária a implementação de um circuito de condicionamento de sinais, amplificando sinais muito baixos e removendo os ruídos, para assim então realizar uma leitura mais precisa no microcontrolador.
+
+\subsubsection{Placa de condicionamento}
+
+O condicionamento do sinal de saída dos sensores é necessário para poder interfaceá-lo com os outros elementos do sistema e tornar assim, sua leitura compreensível para o usuário.
+
+O condicionamento de sinal passa por várias etapas: amplificar, filtrar e equalizar o sinal para que este ganhe níveis de tensão adequados, com boa relação sinal/ruído e distorção harmônica mínima. A aquisição do sinal analógico culmina na sua amostragem e posterior conversão analógica digital (A/D) \cite{SMAR}.
+
+De acordo com estudos apresentados pela National Instruments \cite{national01}, condicionar um sinal consiste em: amplificar, atenuar, excitar, isolar, filtrar, linearizar, aplicar compensação de junção fria e a configuração de ponte. Porém a maioria dos sensores necessitam somente de amplificação, isolação, filtragem, linearização e excitação, dependendo do seu comportamento.
+
+Abaixo uma pequena contextualização quanto aos conceitos que mais são utilizados com os tipos de sensores deste aplicação:
+
+\begin{itemize}
+	\item Amplificação: Consiste no aumento do nível de tensão para alcançar a faixa em que o conversor ADC atua, aumentando assim a sensibilidade e resolução do sinal lido. Com exemplo de circuito na Fig \ref{amplificadorDeInstrumentacao}.
+	\item Isolação: É necessária para que o sinal provindo do sensor não ocorra de danificar o resto do sistema. “Separa” fisicamente o dispositivo de medição, utilizando técnicas como, transformadores, acopladores óticos ou capacitivos.
+	\item Filtragem: Os filtros rejeitam ruídos indesejados dentro de uma determinada faixa de frequência, podendo ser adicionado ao circuito um filtro passa-baixas, passa-altas, passa-faixas ou até mesmo um filtro anti-aliasing, para bloquear ruídos de frequências indesejadas ou para atenuar sinais acima da frequência de \textit{Nyquist}
+	\item Linearização: Quando os sensores produzem sinais de tensão ou corrente que não são linearmente relacionados com a medição física, é preciso linearizar este sinal. Estes processo podendo ser realizado por meio de condicionamento físico do sinal ou por software.
+\end{itemize}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[keepaspectratio=true,scale= 0.7]{figuras/Amplificador.PNG}
+	\caption{Amplificador de Instrumentação \cite{SMAR}}
+	\label{amplificadorDeInstrumentacao}
+\end{figure}
+
+\subsection{Sistema de Controle}
+
+O controle do sistema é realizado de forma semelhante à mostrada na Figura \ref{CadeiaDeMedicao}. Os sensores e atuadores são conectados no motor para realizar as medições. 
+
+No caso da medição, somente a leitura do valor da saída do sensor não é suficiente para completa leitura por parte do microcontrolador. Para isso é necessário o condicionamento destes sinais, só assim, serão enviados para conversão analógica digital e processados pelo algoritmo de controle.
+
+Na nossa aplicação é desejado o controle da aceleração e da ignição de forma eletrônica. Para isso temos o atuador que recebe um sinal condicionado do microcontrolador e realiza tarefa desejada. Em algumas situações o conversor de potência é requisitado, visto que o sinal fornecido pelo microcontrolador não tem amplitude suficiente para afetar o processo alvo.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[keepaspectratio=true,scale= 0.9]{figuras/CadeiaDeMedicao.PNG}
+	\caption{Cadeia de Medição e Atuação em Sistemas de Controle \cite{SMAR}}
+	\label{CadeiaDeMedicao}
+\end{figure}
+
+\subsection{Custos}
+
+A tabela \ref{tabelaCustos} apresenta os custos dos componentes a serem utilizados na parte eletrônica do projeto da bancada. Tais valores podem sofrer ajustes e foram consultados através dos links apresentados na tabela no período de 15 a 30 de março de 2017. 
+
+\begin{table}[h!]
+	\centering
+	\caption{Custos dos componentes}
+	\label{tabelaCustos}
+	\begin{tabular}{|l|l|l|p{5.4cm}|}
+		\hline
+		\textbf{Componente}                                                                            & \textbf{Preço(Unidade)} & \textbf{Quantidade} & \textbf{Loja: Links para consulta}                                                                                                                                                                           \\ \hline
+		LM358                                                                                          & R\$:0,49                & 17                  & \begin{tabular}[c]{@{}l@{}}http://www.huinfinito.com.br/\\ pesquisar?controller=search\&\\ orderby=position\&orderway\\ =desc\&search\_query=\\ lm+358\&submit\_search=\end{tabular}                         \\ \hline
+		Resistencias                                                                                   & R\$:0,04                & 88                  & \begin{tabular}[c]{@{}l@{}}http://www.huinfinito.com.br\\ /34-resistores-de-filme-de\\ -carbono\end{tabular}                                                                                                 \\ \hline
+		Capacitores                                                                                    & R\$:0,05                & 11                  & \begin{tabular}[c]{@{}l@{}}http://www.huinfinito.com.br/\\ pesquisar?controller=search\\ \&orderby=position\&order\\ way=desc\&search\_query\\ =capacitor\&submit\_search=\end{tabular}                      \\ \hline
+		\begin{tabular}[c]{@{}l@{}}Kit para Placa \\ de Circuito \\ Impresso\end{tabular}              & R\$: 65,00              & 1                   & \begin{tabular}[c]{@{}l@{}}http://produto.mercadolivre\\ .com.br/MLB-715578391-\\ kit-p-confeccionar-placa-de\\ -circuito-impresso-suekit-\\ ck-3-\_JM\end{tabular}                                          \\ \hline
+		\begin{tabular}[c]{@{}l@{}}Placa de \\ Circuito Impresso\end{tabular}                          & R\$:11,39               & 2                   & \begin{tabular}[c]{@{}l@{}}http://www.huinfinito.com.br/\\ placas-circuito-impresso/636-\\ placa-fenolite-virgem-face-\\ simples-20x20cm.html?search\\ \_query=circuito+impresso\\ \&results=12\end{tabular} \\ \hline
+		MSP430                                                                                         & R\$:85,00               & 2                   & \begin{tabular}[c]{@{}l@{}}http://produto.mercadolivre\\ .com.br/MLB-842870672\\ -microcontrolador-msp430\\ -hercules-launchpad-\_JM\end{tabular}                                                            \\ \hline
+		RaspBerry Pi                                                                                   & R\$:189,98              & 1                   & \begin{tabular}[c]{@{}l@{}}http://produto.mercadolivre\\ .com.br/MLB-810455120-\\ novo-raspberry-pi-3-model\\ -b-pi3-quadcore-12ghz-top\\ -\_JM\end{tabular}                                                 \\ \hline
+		\begin{tabular}[c]{@{}l@{}}Termopar tipo K \\ (Temp. agua \\ radiador e ambiente)\end{tabular} & R\$ 15,80               & 3                   & \begin{tabular}[c]{@{}l@{}}http://produto.mercadolivre\\ .com.br/MLB-835569184-\\ termopar-tipo-k-sonda-1-\\ metro-ponta-rosca-6mm-\_\\ JM?source=gps\end{tabular}                                           \\ \hline
+		\begin{tabular}[c]{@{}l@{}}Termopar tipo J\\ (temp. gases \\ de combustão)\end{tabular}        & R\$ 15,00               & 1                   & \begin{tabular}[c]{@{}l@{}}http://www.lojaderesisten\\ cias.com.br/inicio/75-\\ termopar-tipo-j-baioneta\\ -8mm-165.html?search\\ \_query=termopar+\\ tipo+j\&results=3\end{tabular}                         \\ \hline
+		TOTAL                                                                                          & R\$: 460,16             & 125                 &                                                                                                                                                                                                              \\ \hline
+	\end{tabular}
+\end{table}
