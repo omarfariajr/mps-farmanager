@@ -1,0 +1,49 @@
+\chapter[Projeto de Software]{Projeto de Software}
+
+\section{Introdução}
+
+Esta seção apresenta a visão geral da solução de Software que é constituída, basicamente, do processamento e da apresentação dos dados através de uma interface gráfica, além de aspectos de integração com o projeto de eletrônica. Por fim, será apresentada uma visão superficial dos componentes do sistemas, bem como uma breve descrição de cada módulo que compõe a aplicação. 
+
+\subsection{Escopo}
+
+Estão previstos dentro do escopo do projeto de software o processamento e armazenamento dos dados oriundos dos diferentes sensores do motor, junto à frente de Eletrônica; O controle de partida e aceleração do motor via software; como também, o desenvolvimento de uma interface gráfica para interação com o usuário da bancada.
+
+Em relação à interface gráfica proposta (Ver Apêndice X), o usuário terá a possibilidade de iniciar o ensaio por meio de uma aplicação WEB, tendo assim, acesso às informações do motor de modo dinâmico ao decorrer do ensaio de análise. A interface será composta de elementos dinâmicos e gráficos referentes à: Temperatura do óleo do motor; Temperatura do ar no coletor de admissão; Pressão do ar no coletor de admissão; Informações de emissão e mistura sonda/lambda. Por fim, o usuário poderá salvar os resultados, acessar os resultados de ensaios anteriores, bem como a geração de relatórios.
+
+\section{Representação da Arquitetura}
+
+A arquitetura concebida constitui a base para a construção do sistema idealizado servindo como direcionamento para o desenvolvimento do produto de Software desde a nível mais baixo da aplicação até o nível mais alto.
+
+O sistema de software será dividido em dois módulos, sendo eles: O módulo de Aquisição e o módulo de controle. No módulo de Aquisição ocorrerá a aquisição dos dados oriundos do motor durante a análise em seguida o processamento e a apresentação dos mesmos ao usuário de forma intuitiva e através de gráficos dinâmicos. No módulo de Controle ocorrerá os controle de partida, aceleração e desaceleração para possibilitar a análise do comportamento do motor em diferentes rotações. Além disso, o sistema contará com um banco de dados onde serão salvos os dados relativos à análise. Por fim, o sistema contará com a funcionalidade de gerar um relatório com os dados de uma análise previamente salva no banco de dados.
+
+Para informações detalhadas a respeito de cada módulo da arquitetura proposta ver Apêndice X.
+
+
+\section{Requisitos Levantados}
+
+A partir do escopo definido no projeto foram elicitados os requisitos funcionais de alto nível. Esses podem ser vistos na tabela \ref{requisitosFuncionais}:
+
+\begin{table}[h!]
+	\centering
+	\caption{Requisitos Funcionais}
+	\label{requisitosFuncionais}
+	\begin{tabular}{|c|l|}
+		\hline
+		\textbf{Requisito Funcional} & \multicolumn{1}{c|}{\textbf{Descrição}} \\ \hline
+		RF01 & \begin{tabular}[c]{@{}l@{}}O sistema deve coletar os dados do motor transmitidos\\ dinamicamente pela Raspberry.\end{tabular} \\ \hline
+		RF02 & \begin{tabular}[c]{@{}l@{}}O sistema deve realizar o tratamento dos dados para\\ apresentá-los de forma intuitiva ao usuário.\end{tabular} \\ \hline
+		RF03 & O sistema deve plotar gráficos a partir dos dados captados. \\ \hline
+		RF04 & \begin{tabular}[c]{@{}l@{}}O sistema deve realizar o controle da partida do motor\\ através de um botão em sua interface.\end{tabular} \\ \hline
+		RF05 & \begin{tabular}[c]{@{}l@{}}O sistema deve realizar a aceleração e desaceleração do\\ motor através de sua interface.\end{tabular} \\ \hline
+		RF06 & \begin{tabular}[c]{@{}l@{}}O sistema deve possuir um botão para que o usuário tenha\\ a opção de salvar todos os dados da análise em um banco\\ de dados.\end{tabular} \\ \hline
+		RF07 & \begin{tabular}[c]{@{}l@{}}O sistema deve possuir um botão para que o usuário tenha\\ a opção de gerar um relatório dos dados de ensaios\\ previamente salvos.\end{tabular} \\ \hline
+	\end{tabular}
+\end{table}
+
+Para maiores informações acerca dos recursos do produto de software, além de uma visão geral do produto e do projeto estão presentes no Documento De Visão disposto no Apêndice X deste documento.
+
+\section{Custo do Desenvolvimento do Software}
+
+O custo do projeto de desenvolvimento do sistema de controle de bancada de testes de motor a combustão será composto apenas pelos 4 computadores Dell Inspiron utilizados pela equipe de desenvolvimento, sendo assim, o custo do projeto do software será de R\$ 10.000,00.
+
+O custo do projeto de desenvolvimento de software consiste apenas em itens de hardware, pois as ferramentas utilizadas na programação serão todas Open Source o que não representa um custo para os desenvolvedores.
