@@ -65,7 +65,6 @@ Todo sistema de aquisição a ser implementado pode ser dividido em 4 módulos, 
 
 Os sensores utilizados internamente no motor apresentam características específicas apresentadas na tabela \ref{PrincipaisSensoresInternosDeUmMotor}.
 
-
 \begin{table}[h!]
 	\centering
 	\caption{Principais sensores internos de um motor}
@@ -73,7 +72,8 @@ Os sensores utilizados internamente no motor apresentam características especí
 	
 	\begin{tabular}{|c|c|c|c|}
 		\hline
-		\textbf{Parâmetros}          & \textbf{\begin{tabular}[c]{@{}c@{}}Tipo de \\ Sinal Gerado\end{tabular}}s & \textbf{Tipo de sensor}                                                                                    & \textbf{Descrição}                                                                                           \\ \hline
+		\textbf{Parâmetros}          & \textbf{\begin{tabular}[c]{@{}c@{}}Tipo de \\ Sinal Gerado\end{tabular}} & \textbf{Tipo de sensor}                                                                                    & \textbf{Descrição}                                                                                           \\ \hline
+			Temperatura do óleo          & Analógico                     & Termistor (NTC)                                                                                            & \begin{tabular}[c]{@{}c@{}}Monitora a \\ temperatura do óleo \\ no motor\end{tabular}  \\ \hline
 		Temperatura do ar            & Analógico                     & Termistor (NTC)                                                                                            & \begin{tabular}[c]{@{}c@{}}Monitora a\\ temperatura do ar no\\ coletor de admissão\end{tabular}              \\ \hline
 		Temperatura da Água          & Analógico                     & Termistor (NTC)                                                                                            & \begin{tabular}[c]{@{}c@{}}Monitora a \\ temperatura do líquido \\ de arrefecimento do\\ motor\end{tabular}  \\ \hline
 		Pressão no Coletor           & Digital                       & Pressão diferencial                                                                                        & \begin{tabular}[c]{@{}c@{}}Monitora a pressão do\\  ar no coletor de \\ admissão\end{tabular}                \\ \hline
@@ -85,6 +85,8 @@ Os sensores utilizados internamente no motor apresentam características especí
 	\end{tabular}
 \end{table}
 
+\clearpage
+
 \begin{table}[h!]
 	\centering
 	\caption{Sensores a serem implementados. Fonte: Autores}
@@ -92,13 +94,28 @@ Os sensores utilizados internamente no motor apresentam características especí
 	\begin{tabular}{|l|l|l|l|}
 		\hline
 		\textbf{Parâmetros}                                                                     & \textbf{\begin{tabular}[c]{@{}l@{}}Tipo de \\ Sinal Gerado\end{tabular}} & \textbf{Tipo de Sensor} & \textbf{Descrição}                                                                                                  \\ \hline
-		\begin{tabular}[c]{@{}l@{}}Temperatura de\\ entrada da água no\\  radiador\end{tabular} & Analógico                                                                & Termistor (NTC)         & \begin{tabular}[c]{@{}l@{}}Monitora a \\ temperatura de entrada\\ da água no radiador\end{tabular}                  \\ \hline
-		\begin{tabular}[c]{@{}l@{}}Temperatura de \\ saída da água \\ no radiador\end{tabular}  & Analógico                                                                & Termistor (NTC)         & \begin{tabular}[c]{@{}l@{}}Monitora a \\ temperatura da água \\ na saída do radiador\end{tabular}                   \\ \hline
+		\begin{tabular}[c]{@{}l@{}}Temperatura de\\ entrada da água no\\  radiador\end{tabular} & Analógico                                                                & Termopar (K)         & \begin{tabular}[c]{@{}l@{}}Monitora a \\ temperatura de entrada\\ da água no radiador\end{tabular}                  \\ \hline
+		\begin{tabular}[c]{@{}l@{}}Temperatura de \\ saída da água \\ no radiador\end{tabular}  & Analógico                                                                & Termopar (K)         & \begin{tabular}[c]{@{}l@{}}Monitora a \\ temperatura da água \\ na saída do radiador\end{tabular}                   \\ \hline
 		\begin{tabular}[c]{@{}l@{}}Temperatura dos\\ gases de \\ Combustão\end{tabular}         & Analógico                                                                & Termistor (NTC)         & \begin{tabular}[c]{@{}l@{}}Monitora a \\ temperatura dos \\ gases de combustão\\  no sistema de escape\end{tabular} \\ \hline
 	\end{tabular}
 \end{table}
 
-Tendo em vista o difícil acesso as configurações dos sensores internos todos os sensores listados nas tabelas \ref{PrincipaisSensoresInternosDeUmMotor} e \ref{SensoresASeremImplementados} serão adquiridos e implementados de acordo com os requisitos para cada parâmetro a ser analisado. Todos estes sensores devem apresentar a mesma metodologia de funcionamento dos sensores internos. Isso facilitará a calibração dos sensores.
+\begin{itemize}
+	\item \textbf{Termistor (NTC)}:
+	A função deste sensor é medir a temperatura do óleo, da água do motor e do ar no coletor de admissão, transmitindo ao painel da bancada a temperatura destes parâmetros. Este sensor funciona pelo conceito de resistência variável, O termistor NTC (\textit{Negative Temperature Coeficient}) apresenta uma relação negativa entre a resistência e a variação a temperatura, ou seja, quanto maior a temperatura menor será a resistência. Estes sensores apresentam taxa de erro de aproximadamente 1\% , podendo atuar entre -55º e 150º. Neste projeto por se tratar de um sistema crítico, devido aos riscos de acidente, este tipo de sensor foi o escolhido, pois atende a todos os requisitos onde, possui uma pequena faixa de erro, possui um baixo custo e atua dentro das temperaturas a serem lidas, onde a maior temperatura a ser lida é de até 110º que é a temperatura do óleo do motor\cite{vdo01};
+	
+	\item \textbf{Termopar}: É um sensor utilizado para a medição de temperatura. Ele é feito utilizando dois metais diferentes ligados por suas extremidades. Quando há uma diferença de temperatura entre a extremidade unida e as extremidades livres, verifica-se o surgimento de uma diferença de potencial que pode ser medida por um voltímetro. Normalmente a saída é dada em microvolts, por isso, precisamos da placa de condicionamento para amplificação desse sinal. Nesse projeto, foi escolhido esse sensor devido ao sua capacidade de ler uma faixa de temperatura considerável e por sua construção física permite a leitura de temperatura em meios fluidos. Necessária para essa aplicação \cite{vdo01}.
+	
+	\item \textbf{Sensor Indutivo}: Fornece ao módulo um sinal elétrico que possibilita a medição do número de rotação. O sinal gerado pelo sensor é obtido pela variação do fluxo magnético. Com a rotação do motor, os dentes da roda dentada passam pelo sensor e este fornece um sinal de tensão a cada passagem dos dentes ou ressaltos. Este sensor já é um ítem embutido no motor utilizado no projeto\cite{vdo01}.
+	
+	\item \textbf{Potênciometro Linear}:
+	Utilizado para captar a posição da válvula borboleta o potênciometro atua na variação da resistência de acordo com a variação da posição de um eixo que é rotacionado Escolhido para esse projeto pois se adequa com simplicidade à variação de posição que se deseja obter para permitir análise de dados nessa bancada\cite{vdo01}.
+	
+	\item \textbf{Pressão Diferencial}: 
+	Sensor MAP funciona medindo pressões através de manômetros e transformando em medidas de sinais elétricos. Normalmente utilizado para informar a pressão absoluta no coletor de admissão no motor de combustão interna \cite{vdo01}.
+	
+	\item \textbf{MPX5700}: é um sensor de pressão condicionado com temperatura compensada e calibrada, desenvolvido para uma vasta gama de aplicações. Mas particularmente às que incluem microcontroladores ou microprocessadores com entradas analógicas/digitais. Atendendo aplicações de 0 a 7.14 bar, podendo ser elas medições de pressão de ar, água ou vácuo\cite{freescaler01}.
+\end{itemize}
 
 \subsubsection{Microcontrolador}
 
@@ -140,6 +157,8 @@ Abaixo uma pequena contextualização quanto aos conceitos que mais são utiliza
 	\label{amplificadorDeInstrumentacao}
 \end{figure}
 
+Na figura \ref{amplificadorDeInstrumentacao} é representado um modelo de amplificador de instrumentação, constituído em um circuito de ganho definido pelas relações entre as resistências. A tensão de saída é definida pela diferença de potencial entre as entradas e o ganho relacionado às resistência. Tal cálculo pode ser deduzido pela análise nodal junto das propriedades de amplificadores operacionais, sobre as tensões nas entradas e a relação com a saída.
+
 \subsection{Sistema de Controle}
 
 O controle do sistema é realizado de forma semelhante à mostrada na Figura \ref{CadeiaDeMedicao}. Os sensores e atuadores são conectados no motor para realizar as medições. 
@@ -155,26 +174,34 @@ Na nossa aplicação é desejado o controle da aceleração e da ignição de fo
 	\label{CadeiaDeMedicao}
 \end{figure}
 
+\subsection{Sistema de Comunicação}
+
+\subsubsection{Protocolo de comunicação I2C}
+
+O protocolo de comunicação I2C foi criado em 1996 pela philips \cite{benincasa2011desenvolvimento} com o objetivo de conectar periféricos de baixas velocidades a placa-mãe, microcontroladores, entre outros. Este protocolo descreve o funcionamento de um barramento de comunicação serial que utiliza apenas dois fios para trafegar informações. Para que a informação possa trafegar entre os dois componentes, é necessário que a unidade de controle e os periféricos possuam implementação e suporte I2C, seja essa implementação feita via hardware ou software. 
+O protocolo I2C possui dois tipos de dispositivos, Mestre e \textit{Slaves}. O Mestre é a unidade responsável por coordenar todos os periféricos (\textit{Slaves}). Dessa maneira, o mestre sempre verifica se existe um \textit{Slaves} na rede e caso exista, ele responde, começando assim, a transferência de dados.
+Neste projeto como é a raspberry Pi 3 que é responsável por realizar o processamento dos dados para gerar a informação final figura \ref{DiagramaDeAquisicaoDeDados}, é considerada então o mestre, pois é a raspberry a responsável por controlar o sistema de comunicação com ambas MSP430, tanto de controle, quanto a de aquisição.
+
+
 \subsection{Custos}
 
 A tabela \ref{tabelaCustos} apresenta os custos dos componentes a serem utilizados na parte eletrônica do projeto da bancada. Tais valores podem sofrer ajustes e foram consultados através dos links apresentados na tabela no período de 15 a 30 de março de 2017. 
+
 
 \begin{table}[h!]
 	\centering
 	\caption{Custos dos componentes}
 	\label{tabelaCustos}
-	\begin{tabular}{|l|l|l|p{5.4cm}|}
+	\begin{tabular}{|l|l|l|l|}
 		\hline
-		\textbf{Componente}                                                                            & \textbf{Preço(Unidade)} & \textbf{Quantidade} & \textbf{Loja: Links para consulta}                                                                                                                                                                           \\ \hline
-		LM358                                                                                          & R\$:0,49                & 17                  & \begin{tabular}[c]{@{}l@{}}http://www.huinfinito.com.br/\\ pesquisar?controller=search\&\\ orderby=position\&orderway\\ =desc\&search\_query=\\ lm+358\&submit\_search=\end{tabular}                         \\ \hline
-		Resistencias                                                                                   & R\$:0,04                & 88                  & \begin{tabular}[c]{@{}l@{}}http://www.huinfinito.com.br\\ /34-resistores-de-filme-de\\ -carbono\end{tabular}                                                                                                 \\ \hline
-		Capacitores                                                                                    & R\$:0,05                & 11                  & \begin{tabular}[c]{@{}l@{}}http://www.huinfinito.com.br/\\ pesquisar?controller=search\\ \&orderby=position\&order\\ way=desc\&search\_query\\ =capacitor\&submit\_search=\end{tabular}                      \\ \hline
-		\begin{tabular}[c]{@{}l@{}}Kit para Placa \\ de Circuito \\ Impresso\end{tabular}              & R\$: 65,00              & 1                   & \begin{tabular}[c]{@{}l@{}}http://produto.mercadolivre\\ .com.br/MLB-715578391-\\ kit-p-confeccionar-placa-de\\ -circuito-impresso-suekit-\\ ck-3-\_JM\end{tabular}                                          \\ \hline
-		\begin{tabular}[c]{@{}l@{}}Placa de \\ Circuito Impresso\end{tabular}                          & R\$:11,39               & 2                   & \begin{tabular}[c]{@{}l@{}}http://www.huinfinito.com.br/\\ placas-circuito-impresso/636-\\ placa-fenolite-virgem-face-\\ simples-20x20cm.html?search\\ \_query=circuito+impresso\\ \&results=12\end{tabular} \\ \hline
-		MSP430                                                                                         & R\$:85,00               & 2                   & \begin{tabular}[c]{@{}l@{}}http://produto.mercadolivre\\ .com.br/MLB-842870672\\ -microcontrolador-msp430\\ -hercules-launchpad-\_JM\end{tabular}                                                            \\ \hline
-		RaspBerry Pi                                                                                   & R\$:189,98              & 1                   & \begin{tabular}[c]{@{}l@{}}http://produto.mercadolivre\\ .com.br/MLB-810455120-\\ novo-raspberry-pi-3-model\\ -b-pi3-quadcore-12ghz-top\\ -\_JM\end{tabular}                                                 \\ \hline
-		\begin{tabular}[c]{@{}l@{}}Termopar tipo K \\ (Temp. agua \\ radiador e ambiente)\end{tabular} & R\$ 15,80               & 3                   & \begin{tabular}[c]{@{}l@{}}http://produto.mercadolivre\\ .com.br/MLB-835569184-\\ termopar-tipo-k-sonda-1-\\ metro-ponta-rosca-6mm-\_\\ JM?source=gps\end{tabular}                                           \\ \hline
-		\begin{tabular}[c]{@{}l@{}}Termopar tipo J\\ (temp. gases \\ de combustão)\end{tabular}        & R\$ 15,00               & 1                   & \begin{tabular}[c]{@{}l@{}}http://www.lojaderesisten\\ cias.com.br/inicio/75-\\ termopar-tipo-j-baioneta\\ -8mm-165.html?search\\ \_query=termopar+\\ tipo+j\&results=3\end{tabular}                         \\ \hline
-		TOTAL                                                                                          & R\$: 460,16             & 125                 &                                                                                                                                                                                                              \\ \hline
+		\textbf{Componente}                                                                             & \textbf{Preço(Unidade)} & \textbf{Quantidade} & \textbf{Loja: Links para consulta}                                                                                                                                                                        \\ \hline
+		AD595                                                                                           & R\$:87,00               & 6                   & \begin{tabular}[c]{@{}l@{}}http://produto.mercadolivre.com.br/\\ MLB-712124692-ad595-thermocou\\ ple-amplifier-circuito-integrado-\_\\ JM?source=gps\end{tabular}                                         \\ \hline
+		\begin{tabular}[c]{@{}l@{}}Sensor De \\ Pressão Mpx5700\end{tabular}                            & R\$ 60,00               & 6                   & \begin{tabular}[c]{@{}l@{}}http://produto.mercadolivre.com.br/\\ MLB-708718648-sensor-de-presso\\ -mpx5700-para-arduino-pic-e-etc-\_\\ JM?source=gps\end{tabular}                                         \\ \hline
+		\begin{tabular}[c]{@{}l@{}}Kit para Placa de\\ Circuito Impresso\end{tabular}                   & R\$: 65,00              & 1                   & \begin{tabular}[c]{@{}l@{}}http://produto.mercadolivre.com.br/\\ MLB-715578391-kit-p-confecciona\\ r-placa-de-circuito-impresso-suekit\\ -ck-3-\_JM\end{tabular}                                          \\ \hline
+		\begin{tabular}[c]{@{}l@{}}Placa de Circuito\\ Impresso\end{tabular}                            & R\$:11,39               & 2                   & \begin{tabular}[c]{@{}l@{}}http://www.huinfinito.com.br/plac\\ as-circuito-impresso/636-placa-fe\\ nolite-virgem-face-simples-20x20\\ cm.html?search\_query=circuito+i\\ mpresso\&results=12\end{tabular} \\ \hline
+		MSP430                                                                                          & R\$:85,00               & 2                   & \begin{tabular}[c]{@{}l@{}}2http://produto.mercadolivre.com.\\ br/MLB-842870672-microcontro\\ lador-msp430-hercules-launchpad-\\ \_JM\end{tabular}                                                        \\ \hline
+		RaspBerry Pi                                                                                    & R\$:189,98              & 1                   & \begin{tabular}[c]{@{}l@{}}http://produto.mercadolivre.com.br\\ /MLB-810455120-novo-raspberry\\ -pi-3-model-b-pi3-quadcore-12gh\\ z-top-\_JM\end{tabular}                                                 \\ \hline
+		\begin{tabular}[c]{@{}l@{}}Termopar tipo K\\ (Temp. agua\\ radiador e \\ ambiente)\end{tabular} & R\$ 15,80               & 6                   & \begin{tabular}[c]{@{}l@{}}http://produto.mercadolivre.com.br\\ /MLB-835569184-termopar-tipo-k\\ -sonda-1-metro-ponta-rosca-6mm-\\ \_JM?source=gps\end{tabular}                                           \\ \hline
+		Total                                                                                           & R\$: 460,16             & 125                 &                                                                                                                                                                                                           \\ \hline
 	\end{tabular}
 \end{table}
