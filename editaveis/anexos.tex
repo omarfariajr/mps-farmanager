@@ -160,9 +160,9 @@ O escopo deste documento é documentar as partes significativas do ponto de vist
 
 \section{Arquitetura da Aplicação}
 
-O  SBTM - Software da Bancada de Testes de Motor será um sistema web embarcado na Raspberry Pi que terá dois módulos de aplicação, sendo eles o módulo de aquisição onde terá uma placa microcontroladora MSP430-2 que irá coletar todos os dados do motor dinamicamente durante a análise e enviá-los Raspberry Pi utilizando a comunicação UART 12c para que o software possa gerenciá-los e exibi-los de forma intuitiva ao usuário, e também terá o módulo de controle onde serão feitos os controles de partida e aceleração do motor, que serão feitos através de envio de dados para a MSP430-2 utilizando o GPIO.
+O  SBTM - Software da Bancada de Testes de Motor será um sistema web que terá dois módulos de aplicação, sendo eles o módulo de aquisição onde terá uma placa microcontroladora MSP430-2 que irá coletar todos os dados do motor dinamicamente durante a análise e enviá-los para a Raspberry Pi utilizando a comunicação UART 12c, assim, haverá um servidor wifi gerado pela RaspBerry e conectado ao computador que transmitirá os dados para que o software possa gerenciá-los e exibi-los de forma intuitiva ao usuário. Também terá o módulo de controle onde serão feitos os controles de partida e aceleração do motor, que serão feitos através de envio de dados para a MSP430-2 utilizando comunicação GPIO.
 
-Adicionalmente, o software terá um banco de dados onde serão persistidos os resultados da análise do motor. Sendo assim, será possível ao usuário abrir uma análise previamente salva no banco de dados.
+Adicionalmente, o software terá um banco de dados na RaspBerry onde serão persistidos os resultados da análise do motor. Sendo assim, será possível ao usuário abrir posteriormente uma análise previamente salva no banco de dados.
 
 \subsection{Representação da Arquitetura}
 
@@ -178,20 +178,35 @@ A figura \ref{diagramaArquitetura} representa o Diagrama de componentes do SBTM:
 \subsection{Objetivos e Restrições da Arquitetura}
 
 O objetivo dessa arquitetura é modularizar a aplicação de modo a prover um controle no desenvolvimento e facilidade de manutenção do sistema. Além disso, essa arquitetura modularizada provê um ambiente mais propício para implementação de novas features.
-A restrição da arquitetura proposta está no poder de processamento da RaspBerry Pi, pois o volume de dados a serem gerenciados será relativamente grande	o que irá exigir um poder de processamento maio por parte da RaspBerry.
+A restrição da arquitetura proposta está no poder de processamento da RaspBerry Pi, pois o volume de dados a serem persistidos será relativamente grande o que irá exigir um poder de processamento maior por parte da RaspBerry.
 
 \section{Visão de Casos de Uso}
 
-O SBTM possui inicialmente 6 casos de uso, sendo eles:
+O SBTM possui inicialmente 8 casos de uso, sendo eles:
 
 \begin{itemize}
-	\item Analisar dados do motor;
-	\item Gerar relatório;
-	\item Ligar motor;
-	\item Acelerar motor;
-	\item Desacelerar motor;
-	\item Gerar gráficos;
+	\item UC01 - Realizar acionamento do motor;
+	\item UC02 - Realizar a aceleração do motor;
+	\item UC03 - Realizar a desaceleração do motor;
+	\item UC04 - Salvar informações geradas pela análise do motor;
+	\item UC05 - Gerar relatório;
+	\item UC06 - Iniciar análise;
+	\item UC07 - Apresentar dados do motor dinamicamente;
+	\item UC08 - Apresentar gráficos dinâmicos.
 \end{itemize}
+
+A figura \ref{diagramaCasoDeUso} apresenta o diagrama de casos de uso do SBTM:
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[keepaspectratio=true,scale= 0.7]{figuras/DiagramaDeCasoDeUso.PNG}
+	\caption{Diagrama de Caso de Uso}
+	\label{diagramaCasoDeUso}
+\end{figure}
+
+Observa-se que há uma dependência entre os casos de uso UC01, UC02 e UC03. Esta dependência ocorre pois para que seja possível acelerar o motor (UC02) é necessário que ele seja previamente acionado (UC02), o mesmo ocorre no caso da desaceleração do motor (UC03) pois para que seja possível desacelerar é necessário que o motor esteja acionado e acelerado.
+
+Além disso, observa-se também uma relação de dependência entre os casos de uso UC06, UC07 e UC08. Esta dependência ocorre pois para que o UC07 e UC08 ocorram, é necessário que o UC06 tenha ocorrido, porém o UC07 sempre ocorrerá e o UC08 poderá ocorrer ou não.
 
 \chapter{Terceiro Anexo}
 
