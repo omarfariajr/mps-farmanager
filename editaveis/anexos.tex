@@ -4,19 +4,19 @@
 
 \chapter{Documento de Visão}
 
-\subsection{Introdução}
+\section{Introdução}
 
-\subsubsection{Finalidade}
+\subsection{Finalidade}
 
 A finalidade deste documento é fornecer uma visão geral da aplicação de aquisição e manipulação dos dados do motor a combustão, apresentando uma visão das macro-funcionalidades do software. Além disso, objetiva-se apresentar as razões pelas quais o sistema será construído.
 
-\subsubsection{Escopo}
+\subsection{Escopo}
 
 A aplicação destina-se ao suporte ao usuário da bancada, com intuito de fornecer a visualização de informações a cerca do funcionamento do motor no momento da análise de forma gráfica. Tais informações são: Temperatura do óleo do motor; Temperatura do ar no coletor de admissão; Pressão do ar no coletor de admissão; Informações de emissão e mistura sonda/lâmbda.
 
-\subsection{Posicionamento}
+\section{Posicionamento}
 
-\subsubsection{Descrição do problema}
+\subsection{Descrição do problema}
 
 \begin{table}[h!]
 	\centering
@@ -33,7 +33,7 @@ A aplicação destina-se ao suporte ao usuário da bancada, com intuito de forne
 
 \newpage
 
-\subsubsection{Sentença de posição do produto}
+\subsection{Sentença de posição do produto}
 
 \begin{table}[h!]
 	\centering
@@ -51,9 +51,9 @@ A aplicação destina-se ao suporte ao usuário da bancada, com intuito de forne
 \end{table}
 
 
-\subsection{Decrição dos Envolvidos e dos Usuários}
+\section{Decrição dos Envolvidos e dos Usuários}
 
-\subsubsection{Resumo dos envolvidos}
+\subsection{Resumo dos envolvidos}
 
 Informações dos stakeholders do projeto de desenvolvimento do software.
 
@@ -72,7 +72,7 @@ Informações dos stakeholders do projeto de desenvolvimento do software.
 
 \newpage
 
-\subsubsection{Resumo dos usuários}
+\subsection{Resumo dos usuários}
 
 Informações dos usuários finais do software.
 
@@ -88,11 +88,11 @@ Informações dos usuários finais do software.
 	\end{tabular}
 \end{table}
 
-\subsubsection{Ambiente do usuário}
+\subsection{Ambiente do usuário}
 
 O software será utilizado diretamente na bancada, pois trata-se de uma aplicação desktop para o raspbian, sistema operacional baseado em debian que servirá como plataforma para o software. 
 
-\subsubsection{Principais necessidades dos usuários ou dos envolvidos}
+\subsection{Principais necessidades dos usuários ou dos envolvidos}
 
 \begin{table}[h!]
 	\centering
@@ -105,13 +105,13 @@ O software será utilizado diretamente na bancada, pois trata-se de uma aplicaç
 	\end{tabular}
 \end{table}
 
-\subsection{Visão Geral do Produto}
+\section{Visão Geral do Produto}
 
-\subsubsection{Perspectiva do produto}
+\subsection{Perspectiva do produto}
 
 Espera-se que o software sirva de auxílio à bancada de testes de um motor a combustão, permitindo uma melhor e mais agradável visualização do funcionamento do equipamento, resultando numa maior facilidade no aprendizado a partir dos alunos.
 
-\subsubsection{Resumo dos recursos}
+\subsection{Resumo dos recursos}
 
 Os recursos que o sistema deve conter são funcionalidades importantes para resolver o problema e as necessidades do cliente. Este software conta com as seguintes funcionalidades:
 
@@ -120,7 +120,7 @@ Os recursos que o sistema deve conter são funcionalidades importantes para reso
 	\item Visualização dos resultados - Esta funcionalidade permite que o usuário visualize os resultados da análise realizada por meio de gráficos intuitivos.
 \end{itemize}
 
-\subsection{Recursos do Produto}
+\section{Recursos do Produto}
 
 \begin{itemize}
 	\item O sistema deve coletar os dados do motor em “tempo real” transmitidos pela MSP430;
@@ -130,7 +130,7 @@ Os recursos que o sistema deve conter são funcionalidades importantes para reso
 	\item O sistema deve possuir a opção de gerar um relatório.
 \end{itemize}
 
-\subsection{Restrições}
+\section{Restrições}
 
 Nesta seção serão apresentados as restrições de design, restrições externas, como requisitos operacionais ou regulamentares e outras dependências.
 
@@ -143,9 +143,53 @@ São restrições do produto:
 	\item O software não deverá realizar o controle de partida e aceleração do motor por questões de segurança.
 \end{itemize}
 
-\chapter{Segundo Anexo}
+\chapter{Documento de Arquitetura}
 
-Texto do segundo anexo.
+\section{Introdução}
+
+Este documento apresenta a arquitetura proposta para o software da bancada de testes de motor que fará o tratamento, exposição dos dados coletados na análise de motor a combustão e o controle do motor. A arquitetura é apresentada através de um conjunto de visões que juntas visam cobrir os principais aspectos técnicos relativos ao desenvolvimento e implantação do sistema em questão. O objetivo é capturar e formalizar as principais decisões tomadas com relação à arquitetura do sistema.
+
+\subsection{Finalidade}
+
+Este documento tem como objetivo apresentar uma arquitetura para sistemas que possuem características de aquisição de dados em “tempo real” a partir de uma placa microcontroladora.
+
+\subsection{Escopo}
+
+O escopo deste documento é documentar as partes significativas do ponto de vista da arquitetura, como sua divisão em camadas e pacotes.
+
+\section{Arquitetura da Aplicação}
+
+O  SBTM - Software da Bancada de Testes de Motor será um sistema web embarcado na Raspberry Pi que terá dois módulos de aplicação, sendo eles o módulo de aquisição onde terá uma placa microcontroladora MSP430-2 que irá coletar todos os dados do motor dinamicamente durante a análise e enviá-los Raspberry Pi utilizando a comunicação UART 12c para que o software possa gerenciá-los e exibi-los de forma intuitiva ao usuário, e também terá o módulo de controle onde serão feitos os controles de partida e aceleração do motor, que serão feitos através de envio de dados para a MSP430-2 utilizando o GPIO.
+
+Adicionalmente, o software terá um banco de dados onde serão persistidos os resultados da análise do motor. Sendo assim, será possível ao usuário abrir uma análise previamente salva no banco de dados.
+
+\subsection{Representação da Arquitetura}
+
+Diagrama de componentes do SBTM:
+
+Figura
+
+\subsection{Objetivos e Restrições da Arquitetura}
+
+O objetivo dessa arquitetura é modularizar a aplicação de modo a prover um controle no desenvolvimento e facilidade de manutenção do sistema. Além disso, essa arquitetura modularizada provê um ambiente mais propício para implementação de novas features.
+A restrição da arquitetura proposta está no poder de processamento da RaspBerry Pi, pois o volume de dados a serem gerenciados será relativamente grande	o que irá exigir um poder de processamento maio por parte da RaspBerry.
+
+\section{Visão de Casos de Uso}
+
+O SBTM possui inicialmente 6 casos de uso, sendo eles:
+
+\begin{itemize}
+	\item Analisar dados do motor;
+	\item Gerar relatório;
+	\item Ligar motor;
+	\item Acelerar motor;
+	\item Desacelerar motor;
+	\item Gerar gráficos;
+\end{itemize}
+
+\chapter{Terceiro Anexo}
+
+Texto do terceiro anexo.
 
 \end{anexosenv}
 
