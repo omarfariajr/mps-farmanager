@@ -1,7 +1,7 @@
 TARGET = TCC_FGA.pdf
 
 BIBTEX = bibtex
-LATEX = latex
+LATEX = pdflatex
 DVIPS = dvips
 PS2PDF = ps2pdf
 
@@ -36,7 +36,7 @@ SOURCES = $(FIXOS_FILES) $(EDITAVEIS_FILES)
 
 all: 
 	@make $(TARGET)
-     
+
 $(TARGET): $(MAIN_FILE) $(SOURCES) bibliografia.bib
 	$(LATEX) $(MAIN_FILE) $(SOURCES)
 	$(BIBTEX) $(AUX_FILE)
