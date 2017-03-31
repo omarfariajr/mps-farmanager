@@ -1,11 +1,10 @@
-
-\chapter[Sub Energia]{Sub Energia}
+\chapter[Projeto de Energia]{Projeto de Energia}
 
 \section{Objetivo Específico}
 
-Dimensionar o sistema de arrefecimento e de admissão de um motor a combustão interna e de um dinamômetro de bancada. Com isso analisar as transferências de calor presentes no sistema, o fluxo de ar, consumo de combustível, desempenho do motor e emissões gasosas.
+Dimensionar o sistema de arrefecimento e de admissão de um motor a combustão interna e de um dinamômetro de bancada. Com isso analisar as transferências de calor presentes no sistema, o fluxo de ar, consumo de combustível e emissões gasosas.
 
-Fazer a instalação elétrica do dinamômetro de bancada juntamente com seu ligamento a rede.
+Fazer o estudo da instalação elétrica do dinamômetro de bancada juntamente com seu ligamento a rede.
 
 \section{Recursos}
 
@@ -27,7 +26,7 @@ O fluido refrigerante é composto por uma solução de água e etilenoglicol. O 
 
 O radiador é uma superfície aletada onde ocorrem as trocas de calor com o ambiente. As aletas são utilizadas para aumentar a transferência de calor com o ambiente e aumentam muito a taxa de transferência de calor com a partir da superfície.  Esse efeito ocorre devido às várias folhas finas de metal que são colocadas nos tubos de água quente e que aumentam várias vezes a superfície de convecção \cite{energiaTransferencia}.
 
-Todo o sistema de arrefecimento já está presente no motor que será utilizado para os testes . Serão colocados dois sensores de temperatura antes e depois do radiador para que possam ser efetuados os cálculos da transferência de calor, bem como monitorar a temperatura do líquido de arrefecimento. Conhecendo-se a temperatura do fluido na entrada e a temperatura na saída, a taxa de transferência de calor a partir do fluido de resfriamento para o ar é dada por:
+Todo o sistema de arrefecimento já está presente no motor que será utilizado para os testes. Serão colocados dois sensores de temperatura antes e depois do motor para que possam ser efetuados os cálculos da transferência de calor, bem como monitorar a temperatura do líquido de arrefecimento. Esse monitoramento é necessário para garantir que a  variação de temperatura não ultrapasse 10$^{\circ}$C e que a temperatura de saída do motor não ultrapasse 100$^{\circ}$C.  Conhecendo-se a temperatura do fluido na entrada ($T_{e}$) e a temperatura na saída ($T_{s}$), a taxa de transferência de calor a partir do fluido de resfriamento para o ar é dada por:
 
 \begin{equation}
 	Q = mc_{p}t = mc_{p}(T_{e} - T_{s})
@@ -61,15 +60,19 @@ $c_{p}$ : Calor específico a pressão constante (J/kg.K)
 
 \subsection{Sistema de Admissão}
 
-O Sistema de Controle de Admissão de Ar  - SCAA do projeto tem o objetivo de avaliar o fluxo de ar (volume por unidade de tempo) que é admitido para o interior da câmara de combustão do motor. 
+O Sistema de Controle de Admissão de Ar  - SCAA do projeto tem o objetivo de avaliar a massa de ar (volume por unidade de tempo) que é admitido para o interior da câmara de combustão do motor.
 
 As informações do SCAA e do Sistema de Controle de Escape de Gases - SCEG permite identificar, através de testes, a composição ideal em porcentagem da mistura ar/combustível para atingir o melhor consumo de combustível (combustão completa). 
 
-O SCAA será fixado no coletor de ar do motor em análise pela Bancada de Teste de Motores - BTM. O SCAA é composto por uma luva metálica, tubulação metálica, um fluxômetro, e uma válvula de controle de entrada de ar. A luva metálica acoplará o coletor de ar do motor à tubulação metálica onde serão fixados o fluxômetro e válvula de controle de entrada de ar. As informações do fluxo serão enviadas para a Central de Controle de Dados - CCD. A válvula de controle de entrada de ar será ajustada via computador.
+O SCAA será fixado no coletor de ar do motor em análise pela bancada didática de motor a combustão. O SCAA é composto por uma luva metálica, tubulação metálica, um fluxômetro, e uma válvula de controle de entrada de ar. A luva metálica acoplará o coletor de ar do motor à tubulação metálica onde serão fixados o fluxômetro e válvula de controle de entrada de ar. As informações do fluxo serão enviadas para a Central de Controle de Dados - CCD. A válvula de controle de entrada de ar será ajustada via computador.
+
+No monitoramento do sistema de admissão, serão analisados dois parâmetros: massa e temperatura do ar que entra na câmara de combustão. Para o cálculo da massa de ar, será elaborado um modelo matemático utilizando as variáveis de pressão e temperatura da caixa estabilizadora de ar e a pressão do ambiente. A caixa estabilizadora tem o objetivo de manter um fluxo de ar contínuo no sistema.
+
+A temperatura do ar será coletada diretamente de um sensor de temperatura posicionado no coletor de admissão.
 
 \subsection{Instalação do Dinamômetro}
 
-Para funcionamento deste equipamento, será necessário um amplo estudo de viabilidade técnica e financeira. A unidade de controle do dinamômetro funciona em alta voltagem, por isso necessita de um projeto de sistema de aterramento para segurança, dimensionamento do cabeamento.
+Para funcionamento deste equipamento, será necessário um amplo estudo de viabilidade técnica e financeira. A unidade de controle do dinamômetro funciona em alta voltagem, por isso necessita de um projeto de sistema de aterramento, dimensionamento do cabeamento.
 
 O projeto de aterramento se resume nas seguintes etapas:
 
@@ -86,13 +89,17 @@ O projeto de aterramento se resume nas seguintes etapas:
 	\item Revisão e refinamento da malha de aterramento
 \end{enumerate}
 
-A partir de uma análise da demanda de energia elétrica na Faculdade Gama durante vários momentos do dia, será escolhido o horário em que a demanda for menor para realização dos testes de acordo com o gráfico gerado (energia elétrica consumida x tempo).
+Esse procedimento deve ser realizado com intuito de minimizar danos materiais, manter os limites de segurança de modo que reduza a possibilidade de acidentes como choques \cite{raggi2009}.
+
+O cabeamento principal será utilizado na conexão da unidade de controle do dinamômetro com a rede. Para isso é necessário o dimensionamento dos cabos e posteriormente a viabilidade econômica pois a distância do laboratório da bancada em questão e a subestação da Faculdade Gama UnB é relativamente longa.
+
+A partir de uma análise da demanda de energia elétrica na faculdade durante vários momentos do dia, será escolhido o horário em que a demanda for menor para realização dos testes de acordo com a curva de demanda (energia elétrica consumida x tempo).
 
 \subsection{Análise de teste}
 
 Posteriormente a finalização do projeto, serão realizados testes que demonstram a sua funcionalidade de forma que sirva como material didática para possíveis estudos. Dentres eles, será analisado o consumo de combustível e emissões gasosas com diferentes misturas de combustíveis. 
 
-A medição do consumo de combustível será analisada pelo método volumétrico. Para isso, utiliza-se uma bureta graduada como da figura \ref{buretaGraduada} na linha de alimentação e por meio da diferença no nível de combustível para um determinado intervalo de tempo de funcionamento do motor será fornecido o volume consumido.
+A medição do consumo de combustível será analisada pelo método volumétrico. Para isso, utiliza-se uma bureta graduada como da figura \ref{buretaGraduada} na linha de alimentação e por meio da diferença no nível de combustível para um determinado intervalo de tempo de funcionamento do motor será fornecido o volume consumido \cite{perissinoto2015}.
 
 \begin{figure}[h!]
 	\centering
@@ -105,7 +112,7 @@ A maior fonte de poluição urbana do ar pode ser relacionado com o motor a comb
 
 Ao conhecer os mecanismos de formação de poluentes gerados pelo motor, pode-se associar a tecnologias de gerenciamento de controle. Com isso, compreende-se que os níveis de emissões gasosas veiculares podem ser controlados e regulamentados, adequando-se aos padrões exigidos pela legislação e buscando uma menor poluição do meio ambiente. 
 
-O órgão que delimita os limites legais de emissões veiculares, no Brasil, é o Conselho Nacional do Meio Ambiente (CONAMA). Para a implementação das resoluções, citadas na Tabela 1, o CONAMA criou o Programa de Controle da Poluição do Ar por Veículos Automotores (PROCONVE) para os veículos leves e pesados, fixando prazos, limites máximos de emissões e estabelecendo exigências tecnológicas para veículos automotores, nacionais e importados \cite{energiaAvaliacao}.
+O órgão que delimita os limites legais de emissões veiculares, no Brasil, é o Conselho Nacional do Meio Ambiente (CONAMA). Para a implementação das resoluções, citadas na Tabela \ref{resoluçõesConama}, o CONAMA criou o Programa de Controle da Poluição do Ar por Veículos Automotores (PROCONVE) para os veículos leves e pesados, fixando prazos, limites máximos de emissões e estabelecendo exigências tecnológicas para veículos automotores, nacionais e importados \cite{energiaAvaliacao}.
 
 \begin{table}[h!]
 	\centering
@@ -120,23 +127,23 @@ O órgão que delimita os limites legais de emissões veiculares, no Brasil, é 
 	\end{tabular}
 \end{table}
 
+Para isso será conectado ao sistema de exaustão o equipamento analisador compacto de gases (Pc-Multigás) gerando as porcentagens das emissões gasosas presentes. Devido ao ruído gerado por esse sistema, serão acopladas duas caixas abafadoras para controle do mesmo.
+
 \section{Levantamento de Custos}
 
-Sistema de Arrefecimento: para análise da transferência de calor no sistema de arrefecimento serão utilizados os equipamentos já existentes do motor utilizado, além dos sensores que foram incluídos nos custos do subsistema de eletrônica. Portanto, não haverão custos extras neste subsistema. 
-
-A tabela a seguir estima aproximadamente os valores gastos para o desenvolvimento de estudo do subsistema de energia.
+A tabela \ref{tabelaDeValores} a seguir estima aproximadamente os valores gastos para o desenvolvimento de estudo do subsistema de energia.
 
 \begin{table}[h!]
 	\centering
-	\caption{Detalhamento dos recursos e custos associados no subsistema.}
-	\label{detalhamentoRecursos}
+	\caption{My caption}
+	\label{tabelaDeValores}
 	\begin{tabular}{|l|l|l|}
 		\hline
-		\multicolumn{1}{|c|}{}   & \multicolumn{1}{c|}{Descrição} & \multicolumn{1}{c|}{Valor} \\ \hline
-		Sistema de arrefecimento &                                &                            \\ \hline
-		Sistema de admissão      &                                &                            \\ \hline
-		Análise de emissões      & Analisador de gases compacto   & R\$ 8000,00                 \\ \hline
-		Consumo de combustível   & Bureta graduada                & R\$ 70,00                   \\ \hline
+		\multicolumn{1}{|c|}{}   & \multicolumn{1}{c|}{Descrição}                                                                        	& \multicolumn{1}{c|}{Valor} \\ \hline
+		Sistema de arrefecimento & \begin{tabular}[c]{@{}l@{}}- Trocador de calor\\ - Bomba d’água\\ - Válvula termostática\end{tabular} & R\$ 485,00                  \\ \hline
+		Sistema de admissão      & - Caixa estabilizadora                                                                                		& R\$ 250,00                  \\ \hline
+		Análise de emissões      & - Analisador de gases compacto                                                                        		& R\$ 8000,00                 \\ \hline
+		Consumo de combustível   & - Bureta graduada                                                                                     		& R\$ 70,00                   \\ \hline
 	\end{tabular}
 \end{table}
 
