@@ -90,7 +90,7 @@ Informações dos usuários finais do software.
 
 \subsection{Ambiente do usuário}
 
-O software será utilizado diretamente na bancada, pois trata-se de uma aplicação desktop para o raspbian, sistema operacional baseado em debian que servirá como plataforma para o software. 
+O software será utilizado diretamente na bancada, pois trata-se de uma aplicação Web executando localmente desenvolvido em Python juntamente com o Framework Django que realizará comunicação com a RaspBerry Pi.
 
 \subsection{Principais necessidades dos usuários ou dos envolvidos}
 
@@ -118,13 +118,14 @@ Os recursos que o sistema deve conter são funcionalidades importantes para reso
 \begin{itemize}
 	\item Coleta e Armazenamento de dados - Esta funcionalidade permite que o usuário salve os dados coletados na análise.
 	\item Visualização dos resultados - Esta funcionalidade permite que o usuário visualize os resultados da análise realizada por meio de gráficos intuitivos.
+	\item Geração de relatório - Esta funcionalidade permite que o usuário gere um relatório a partir de uma análise salva no banco de dados.
 \end{itemize}
 
 \section{Recursos do Produto}
 
 \begin{itemize}
-	\item O sistema deve coletar os dados do motor em “tempo real” transmitidos pela MSP430;
-	\item O sistema deve realizar o tratamento dos dados para apresentá-los ao usuário;
+	\item O sistema deve coletar os dados do motor dinamicamente transmitidos pela MSP430;
+	\item O sistema deve realizar o tratamento dos dados para apresentá-los de forma intuitiva ao usuário;
 	\item O sistema deve plotar gráficos a partir dos dados captados;
 	\item O sistema deve possuir um botão para que o usuário tenha a opção de salvar todos os dados da análise em um banco de dados;
 	\item O sistema deve possuir a opção de gerar um relatório.
@@ -137,9 +138,9 @@ Nesta seção serão apresentados as restrições de design, restrições extern
 São restrições do produto:
 
 \begin{itemize}
-	\item O software deverá ser embarcado em uma RaspBerry PI 3 B;
-	\item O software deverá possuir rotinas para a comunicação serial com um microcontrolador MSP430;
-	\item O software deverá ser, em essência, uma aplicação Desktop;
+	\item O software deverá possuir rotinas para a comunicação UART 12C (para o módulo de aquisição) e GPIO (para o módulo de controle) com um microcontrolador MSP430;
+	\item A comunicação entre a RaspBerry Pi e a MSP430 deverá ser dinâmica para que o usuário possa acompanhar o andamento da análise;
+	\item O software deverá ser, em essência, uma aplicação Web desenvolvida em Python juntamente com o Framework Django;
 	\item O software não deverá realizar o controle de partida e aceleração do motor por questões de segurança.
 \end{itemize}
 
