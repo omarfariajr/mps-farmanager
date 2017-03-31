@@ -1,5 +1,29 @@
-\chapter*[Introdução]{Introdução}
+\chapter[Introdução]{Introdução}
 
 \section{Problematização}
 
 \subsection{Objetivo Geral}
+
+A Faculdade UnB Gama (FGA) apresenta como parte de sua oferta o curso de Engenharia Automotiva, onde são apresentados os conceitos teóricos e práticos de sistemas mecânicos e automotivos. Entretanto, uma das carências do curso é a análise laboratorial de um componente fundamental dos sistemas automotivos, no caso um motor a combustão interna, em funcionamento. Esta carência implica na falta de conhecimento prático do funcionamento real destes tipos de motores, onde boa parte destes estudos se limitam a parte teórica.
+
+Tendo em vista este déficit referente ao curso, este projeto apresenta uma proposta de desenvolvimento de uma bancada didática para análise dos principais parâmetros de um motor a combustão, apresentando todos componentes da bancada: Projeto Automotivo, Projeto Eletronico, Projeto de Software e Projeto Energia.
+
+\subsection{Objetivos Específicos}
+
+Desenvolver uma bancada didática de análise de motor a combustão interna para compor a estrutura do curso de Engenharia Automotiva. A bancada será composta pelo motor a ser analisado, uma estrutura para acoplá-lo na bancada, um sistema de admissão, um sistema de alimentação do motor, um de exaustão e pelo software aquisição e processamento dos dados oriundos do motor e para o controle do mesmo. A bancada realizará uma análise do motor em termos de Temperatura do óleo do motor, Temperatura do ar no coletor de admissão, Pressão do ar no coletor de admissão, rotação por minuto, estimação do torque e Informações de emissão e mistura sonda/lambda. A partir desses dados apresentados na interface gráfica do software, serão plotados gráficos em função do tempo.
+
+Os principais requisitos funcionais do projeto são:
+
+\begin{itemize}
+	\item A bancada será capaz de acoplar um motor genérico;
+	\item Acionar o motor com redundância mecânica ou eletronicamente;
+	\item Realizar o controle da aceleração e desaceleração do motor via interface do software e mecanicamente;
+	\item Coletar dados relevantes para a análise de parâmetros do motor;
+	\item Possibilitar ao usuário o estudo e o desenvolvimento didático de análise quanto ao funcionamento de um motor a combustão interna.
+\end{itemize}
+
+Para o dinamômetro, a viabilidade técnica e financeira é muito baixa visto que não há muito suporte quanto à sua montagem mecânica e elétrica. Com agravante de que as ligações com a rede elétrica devem ser realizadas por um técnico licenciado e pela dificuldade de adaptar a tensão de alimentação da central de controle com a tensão disponível na rede.
+
+No âmbito da bancada há uma grande viabilidade técnica partindo do princípio que todos os graduandos destinados à este projeto possuem vasto conhecimento para o que é requisitado para o desenvolvimento da bancada. Financeiramente, pode-se considerar viável visto que o custo pode ser dividido entre 13 integrantes e que após a montagem o custo de manutenção será mínimo.
+
+Os principais desafios técnicos são: adaptar a estrutura de acoplamento ao motor e, posicionar corretamente os sensores para a captação dos dados; dimensionar corretamente os subsistemas conectados ao motor para o correto funcionamento da bancada; condicionar os sinais de saída dos sensores para possibilitar uma leitura adequada dos dados; comunicar o microcontrolador MSP430 que realiza a aquisição dos dados com o dispositivo eletrônico que irá processar os dados, também, este dispositivo com o software de processamento dos dados; fazer o correto uso dos dados adquiridos para possibilitar a análise desejada dos parâmetros do motor.
