@@ -1,41 +1,34 @@
-\chapter[Gerenciamento do Projeto]{Gerenciamento do Projeto}
+\chapter[Escopo]{Escopo}
 
-\section{Termo de Abertura do Projeto}
+Esta seção apresenta o contexto no qual a melhoria será aplicada explicitando o software e suas funcionalidades, os objetivos e premissas do projeto.
+
+\section{Contexto}
+
+No semestre 2016.1 na UnB, foi desenvolvido um projeto de \textit{software} com o nome \textbf{FarmManager}, na disciplina de Desenho de \textit{Software}. Este projeto tinha como principal finalidade a gestão operacional e financeira de uma fazenda de criação de gado e produção de leite no Estado de Goiás.
+
+O FarmManager se encontra concluído, e apresenta extensa documentação, que pode ser encontrada em um repositório do \textit{Github}, ferramenta \textit{web} para controle de versão. A motivação para o uso deste projeto é, principalmente, o fato de embora apresentar qualidade, não ter tido a oportunidade de ser implantado. Isso ocorreu principalmente pelo fato do time que o desenvolveu focar em outros aspectos, como desenvolvimento de novas funcionalidades, maior documentação, dentre outros.
+
+\subsection{Repositório do Github}
+
+O projeto FarmManager foi desenvolvido por uma equipe com o auxílio do \textit{Github} para maior colaboração e organização.
+
+O link do respositório é \url{https://github.com/EduardoMoreira/Desenho-UnB-2016-01}.
 
 
 
-\subsection{Estrutura Analítica do Projeto}
-
-\begin{landscape}
-	\begin{figure}
-		\centering
-		\includegraphics[keepaspectratio=true,scale= 0.8]{figuras/EAP.PNG}
-		\caption{EAP}
-		\label{eap}
-	\end{figure}
-\end{landscape}
-
-\subsection{Cronograma}
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[keepaspectratio=true,scale= 0.8]{figuras/cronograma-PI2-parte1.PNG}
-	\caption{Cronograma - Parte 1}
-	\label{eap}
-\end{figure}
+\section{Cronograma}
 
 \begin{figure}[h!]
-	\centering
-	\includegraphics[keepaspectratio=true,scale= 0.8]{figuras/cronograma-PI2-parte2.PNG}
-	\caption{Cronograma - Parte 2}
+	\includegraphics[keepaspectratio=true,scale= 0.65]{figuras/cronograma-mps.png}
+	\caption{Cronograma}
 	\label{eap}
 \end{figure}
-
-\subsection{Custos}
-
-
 
 \subsection{Recursos}
+
+Esta seção tem como objetivo definir os recursos humanos, materiais e de infra-estrutura necessários para a execução deste projeto.
+
+Os recursos materiais e de infra-estrutura são de posse dos membros da equipe e também são usados em outros projetos. Não há necessidade, desta forma, de qualquer aquisição. 
 
 \begin{table}[h!]
 \centering
@@ -101,20 +94,18 @@ Modelagem          & Cronograma                           & Ebenezer            
 % If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
 \begin{table}[]
 \centering
-\caption{Matriz de Risco}
-\label{matrizDeRisco}
-\begin{tabular}{|
->{\columncolor[HTML]{C0C0C0}}c |
->{\columncolor[HTML]{EFEFEF}}l |l|
->{\columncolor[HTML]{FE0000}}l |
->{\columncolor[HTML]{FE0000}}l |}
+\caption{Tabela de Riscos do Projeto}
+\label{tabela-de-riscos}
+\begin{tabular}{|l|l|c|c|c|l|l|}
 \hline
-\cellcolor[HTML]{CBCEFB}Possibilidade/Impacto & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Leve}                                    & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Médio}                                                    & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Grave}                                                             & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Gravíssimo}                                                               \\ \hline
-Quase Certo                                   & \cellcolor[HTML]{34FF34}                                                             & \cellcolor[HTML]{FE0000}                                                                              &                                                                                                                & \begin{tabular}[c]{@{}l@{}}A rede elétrica não suportar\\ a tensão necessária para\\ ligar o dinamometro\end{tabular} \\ \hline
-Alto                                          & \cellcolor[HTML]{34FF34}                                                             & \cellcolor[HTML]{CD9934}                                                                              &                                                                                                                & \begin{tabular}[c]{@{}l@{}}O projeto não ficar pronto\\ até o prazo estipulado\end{tabular}                           \\ \hline
-Média                                         & Os sensores não funcionarem                                                          & \cellcolor[HTML]{CD9934}                                                                              & \begin{tabular}[c]{@{}l@{}}A integração dos subsistemas\\ não ser realizada\end{tabular}                       & \begin{tabular}[c]{@{}l@{}}Perda de informação durante\\ a transmissão de dados\end{tabular}                          \\ \hline
-Baixa                                         & \begin{tabular}[c]{@{}l@{}}Um integrante do grupo\\ abandonar o projeto\end{tabular} & \cellcolor[HTML]{34FF34}                                                                              & \cellcolor[HTML]{CD9934}\begin{tabular}[c]{@{}l@{}}O custo do projeto ser\\ superior ao orçamento\end{tabular} & O motor não Ligar                                                                                                     \\ \hline
-Rara                                          &                                                                                      & \cellcolor[HTML]{34FF34}\begin{tabular}[c]{@{}l@{}}Queimar algum componente\\ eletrônico\end{tabular} & \cellcolor[HTML]{CD9934}                                                                                       & \cellcolor[HTML]{CD9934}Explodir o Motor                                                                              \\ \hline
+\rowcolor[HTML]{EFEFEF} 
+\textbf{\#} & \textbf{Riscos}                                                                                                                 & \textbf{Probabilidade} & \textbf{Impacto}                   & \textbf{Prioridade} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}\textbf{Ação de Mitigação}}                                                                  & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}\textbf{Ação de Contingência}}                                                      \\ \hline
+1           & \begin{tabular}[c]{@{}l@{}}Atraso na entrega\\ das atividades\end{tabular}                                                      & Média                  & \cellcolor[HTML]{FFFC9E}Médio      & 5                   & \begin{tabular}[c]{@{}l@{}}Cobrança interna entre\\ os integrantes do grupo\end{tabular}                                                 & \begin{tabular}[c]{@{}l@{}}Priorizar essas atividades afim\\ de diminuir o impacto do atraso\end{tabular}                       \\ \hline
+2           & \begin{tabular}[c]{@{}l@{}}Não adoção da\\ melhoria pelo\\ grupo\end{tabular}                                                   & Baixa                  & \cellcolor[HTML]{FFCE93}Grave      & 3                   & \begin{tabular}[c]{@{}l@{}}Elaborar plano de melhoria\\ claro e de concordância de\\ todo o grupo\end{tabular}                           & \begin{tabular}[c]{@{}l@{}}Realizar aprimoramento do\\ plano de melhoria através de\\ consulta à literatura\end{tabular}        \\ \hline
+3           & \begin{tabular}[c]{@{}l@{}}Estimativas\\ equivocadas\end{tabular}                                                               & Alta                   & \cellcolor[HTML]{FFFC9E}Médio      & 4                   & \begin{tabular}[c]{@{}l@{}}Consultar e obter experiências\\ de alunos e professores com\\ maior conhecimento na área\end{tabular}        & \begin{tabular}[c]{@{}l@{}}Alteração das estimativas e\\ planejamento\end{tabular}                                              \\ \hline
+4           & \begin{tabular}[c]{@{}l@{}}Falta de\\ comprometimento\\ ou de motivação\\ por parte dos\\ integrantes\end{tabular}              & Baixa                  & \cellcolor[HTML]{FFFC9E}Médio      & 7                   & \begin{tabular}[c]{@{}l@{}}Realizar dinâmicas para inserir\\ os integrantes no processo\\ aumentando a atuação dos\\ mesmos\end{tabular} & \begin{tabular}[c]{@{}l@{}}Realizar pareamento com o\\ integrante desmotivado afim\\ de dar maior auxílio ao mesmo\end{tabular} \\ \hline
+5           & \begin{tabular}[c]{@{}l@{}}Falta de\\ conhecimento\\ técnico ou\\ gerencial dos\\ integrantes sobre\\ os processos\end{tabular} & Alta                   & \cellcolor[HTML]{FFCCC9}Gravíssimo & 1                   & \begin{tabular}[c]{@{}l@{}}Realizar estudos e pesquisas\\ para aprimorar o conhecimento\\ da equipe\end{tabular}                         & \begin{tabular}[c]{@{}l@{}}Realizar consulta com o\\ professor para sanar dúvidas\end{tabular}                                  \\ \hline
+6           & \begin{tabular}[c]{@{}l@{}}Desistência de\\ um ou mais\\ integrantes\\ do grupo\end{tabular}                                    & Baixa                  & \cellcolor[HTML]{FFCCC9}Gravíssimo & 2                   & \begin{tabular}[c]{@{}l@{}}Priorizar atividades em pares\\ afim de haver maior interação\\ entre os integrantes\end{tabular}             & Reorganização da equipe                                                                                                         \\ \hline
 \end{tabular}
 \end{table}
 \end{landscape}
